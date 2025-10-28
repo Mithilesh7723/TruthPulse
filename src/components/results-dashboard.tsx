@@ -110,7 +110,7 @@ export function ResultsDashboard({ result, headline }: ResultsDashboardProps) {
         </CardHeader>
       </Card>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card className="flex flex-col items-center justify-center text-center shadow-md lg:col-span-1 bg-secondary/30">
             <CardHeader>
                 <CardTitle>Truth Probability</CardTitle>
