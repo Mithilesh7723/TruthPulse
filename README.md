@@ -1,4 +1,4 @@
-# TruthPulse 🚀
+# TruthPulse 
 
 **TruthPulse** is your ultimate tool for truth discovery and data analysis! Whether you're a developer, data scientist, or enthusiast, TruthPulse offers a modern, powerful platform to extract insights and visualize facts with style.
 
