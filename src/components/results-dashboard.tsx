@@ -73,10 +73,12 @@ export function ResultsDashboard({ result, headline }: ResultsDashboardProps) {
           translateText({ text: result.factCheck, targetLanguage: 'hi' }),
         ]);
         
+        const translatedRedFlagsResults = await Promise.all(result.redFlags.map(flag => translateText({ text: flag, targetLanguage: 'hi' })));
+
         setTranslatedContent({
-          explanation: translatedExplanation,
-          redFlags: translatedRedFlags.map(item => item),
-          factCheck: translatedFactCheck,
+          explanation: (await translateText({ text: result.explanation, targetLanguage: 'hi' })),
+          redFlags: translatedRedFlagsResults.map(item => item),
+          factCheck: (await translateText({ text: result.factCheck, targetLanguage: 'hi' })),
         });
 
         setIsTranslated(true);
@@ -145,7 +147,7 @@ export function ResultsDashboard({ result, headline }: ResultsDashboardProps) {
               {currentRedFlags && currentRedFlags.length > 0 ? (
                 <div className="flex flex-col gap-2">
                   {currentRedFlags.map((flag, index) => (
-                    <Badge key={index} variant="destructive" className="bg-yellow-400/10 text-yellow-400 border-yellow-400/20 h-auto text-wrap text-left justify-start break-words">
+                    <Badge key={index} variant="destructive" className="bg-yellow-400/10 text-yellow-400 border-yellow-400/20 h-auto whitespace-normal text-left justify-start break-words">
                       {flag}
                     </Badge>
                   ))}
