@@ -12,8 +12,8 @@ export function TruthPulseLogo({ className }: { className?: string }) {
       strokeLinejoin="round"
       className={cn("text-primary", className)}
     >
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      <path d="M5 10.5h3l1.5-3 2 6 2-3h3" />
+      <path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3z" />
+      <path d="M9 12l2 2 4-4" />
     </svg>
   );
 }
