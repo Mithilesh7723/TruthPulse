@@ -7,4 +7,3 @@ import '@/ai/flows/assess-content-integrity.ts';
 import '@/ai/flows/generate-explanation.ts';
 import '@/ai/flows/assess-source-credibility.ts';
 import '@/ai/flows/analyze-news-article.ts';
-import '@/ai/flows/translate-text.ts';

@@ -2,7 +2,6 @@
 
 import { useState, useTransition } from 'react';
 import type { AnalyzeNewsArticleOutput } from '@/ai/flows/analyze-news-article';
-import { handleTranslation } from '@/app/actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScoreGauge } from '@/components/score-gauge';
 import { AlertTriangle, BookCheck, Bot, Languages, Loader2 } from 'lucide-react';
@@ -10,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { translateText } from '@/lib/translate';
 
 type ResultsDashboardProps = {
   result: AnalyzeNewsArticleOutput;
@@ -68,11 +68,11 @@ export function ResultsDashboard({ result, headline }: ResultsDashboardProps) {
         }
 
         const [translatedExplanation, translatedRedFlags, translatedFactCheck] = await Promise.all([
-          handleTranslation({ text: result.explanation, targetLanguage: 'Hindi' }),
+          translateText({ text: result.explanation, targetLanguage: 'hi' }),
           Promise.all(
-            result.redFlags.map(flag => handleTranslation({ text: flag, targetLanguage: 'Hindi' }))
+            result.redFlags.map(flag => translateText({ text: flag, targetLanguage: 'hi' }))
           ),
-          handleTranslation({ text: result.factCheck, targetLanguage: 'Hindi' }),
+          translateText({ text: result.factCheck, targetLanguage: 'hi' }),
         ]);
 
         setTranslatedContent({
@@ -116,7 +116,7 @@ export function ResultsDashboard({ result, headline }: ResultsDashboardProps) {
             </CardHeader>
             <CardContent className="flex flex-col items-center gap-4">
                 <ScoreGauge score={result.truthScore} color={scoreInfo.color} />
-                <h3 className={`text-3xl font-bold ${scoreInfo.textColor}`}>{scoreInfo.verdict}</h3>
+                <h3 className={`text-xl sm:text-3xl font-bold ${scoreInfo.textColor}`}>{scoreInfo.verdict}</h3>
             </CardContent>
         </Card>
 
