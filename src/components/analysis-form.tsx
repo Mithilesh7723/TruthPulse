@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useEffect, useRef, useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { handleAnalysis, type FormState } from '@/app/actions';
 import type { AnalyzeNewsArticleOutput } from '@/ai/flows/analyze-news-article';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -30,7 +30,7 @@ function SubmitButton() {
 }
 
 export function AnalysisForm({ onAnalysisStart, onAnalysisComplete, onAnalysisError }: AnalysisFormProps) {
-  const [state, formAction] = useFormState(handleAnalysis, initialState);
+  const [state, formAction] = useActionState(handleAnalysis, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
