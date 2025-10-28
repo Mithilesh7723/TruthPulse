@@ -1,6 +1,4 @@
 import { TruthPulseLogo } from '@/components/truth-pulse-logo';
-import { Button } from './ui/button';
-import { Github } from 'lucide-react';
 
 export function Header() {
   return (
@@ -15,12 +13,7 @@ export function Header() {
           </a>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://github.com/FirebaseExtended/ai-apps" target="_blank" rel="noopener noreferrer">
-              <Github className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
-            </a>
-          </Button>
+          {/* GitHub button removed */}
         </div>
       </div>
     </header>
