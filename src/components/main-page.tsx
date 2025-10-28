@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import type { AnalyzeNewsArticleOutput } from '@/ai/flows/analyze-news-article';
 import { useToast } from "@/hooks/use-toast";
 import { AnalysisForm } from '@/components/analysis-form';
@@ -15,6 +15,14 @@ export function MainPage() {
   const [error, setError] = useState<string | null>(null);
   const [headline, setHeadline] = useState<string>('');
   const { toast } = useToast();
+  const resultsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (result && !isLoading) {
+      resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [result, isLoading]);
+
 
   const handleAnalysisStart = (data: { headline: string; content: string }) => {
     setHeadline(data.headline);
@@ -52,32 +60,34 @@ export function MainPage() {
         onAnalysisError={handleAnalysisError}
       />
 
-      {isLoading && <ResultsSkeleton />}
-      
-      {error && !isLoading && (
-         <Card className="text-center border-destructive">
-          <CardHeader>
-            <CardTitle className="text-destructive">Analysis Failed</CardTitle>
-            <CardDescription>{error}</CardDescription>
-          </CardHeader>
-        </Card>
-      )}
+      <div ref={resultsRef} className="scroll-mt-20">
+        {isLoading && <ResultsSkeleton />}
+        
+        {error && !isLoading && (
+           <Card className="text-center border-destructive">
+            <CardHeader>
+              <CardTitle className="text-destructive">Analysis Failed</CardTitle>
+              <CardDescription>{error}</CardDescription>
+            </CardHeader>
+          </Card>
+        )}
 
-      {result && !isLoading && <ResultsDashboard result={result} headline={headline} />}
+        {result && !isLoading && <ResultsDashboard result={result} headline={headline} />}
 
-      {!isLoading && !result && !error && (
-        <Card className="border-dashed border-2 bg-transparent">
-          <CardHeader className="text-center items-center p-8">
-            <div className="mx-auto bg-secondary p-4 rounded-full w-fit">
-              <ScanLine className="h-10 w-10 text-primary" />
-            </div>
-            <CardTitle className="mt-4 text-xl font-semibold">Ready to Analyze</CardTitle>
-            <CardDescription className="mt-2">
-              Your analysis results will appear here.
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      )}
+        {!isLoading && !result && !error && (
+          <Card className="border-dashed border-2 bg-transparent">
+            <CardHeader className="text-center items-center p-8">
+              <div className="mx-auto bg-secondary p-4 rounded-full w-fit">
+                <ScanLine className="h-10 w-10 text-primary" />
+              </div>
+              <CardTitle className="mt-4 text-xl font-semibold">Ready to Analyze</CardTitle>
+              <CardDescription className="mt-2">
+                Your analysis results will appear here.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        )}
+      </div>
     </div>
   );
 }
