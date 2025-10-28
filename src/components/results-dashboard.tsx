@@ -9,30 +9,30 @@ type ResultsDashboardProps = {
   result: AnalyzeNewsArticleOutput;
 };
 
-const getScoreInfo = (score: number) => {
+const getScoreInfo = (score: number, verdict: string) => {
   if (score > 0.7) {
     return {
       color: 'hsl(var(--accent))',
       textColor: 'text-accent',
-      verdict: result.verdict || 'Likely True',
+      verdict: verdict || 'Likely True',
     };
   }
   if (score > 0.4) {
     return {
       color: 'hsl(var(--chart-4))',
       textColor: 'text-chart-4',
-      verdict: result.verdict || 'Unverified',
+      verdict: verdict || 'Unverified',
     };
   }
   return {
     color: 'hsl(var(--destructive))',
     textColor: 'text-destructive',
-    verdict: result.verdict || 'Likely False',
+    verdict: verdict || 'Likely False',
   };
 };
 
 export function ResultsDashboard({ result }: ResultsDashboardProps) {
-  const scoreInfo = getScoreInfo(result.truthScore);
+  const scoreInfo = getScoreInfo(result.truthScore, result.verdict);
 
   return (
     <div className="animate-in fade-in-50 duration-500">
