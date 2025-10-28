@@ -21,7 +21,7 @@ export function ScoreGauge({ score, color }: ScoreGaugeProps) {
   const offset = circumference - progress * circumference;
 
   return (
-    <div className="relative h-36 w-36 sm:h-40 sm:w-40 md:h-48 md:w-48">
+    <div className="relative h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48">
       <svg className="h-full w-full" viewBox="0 0 200 200">
         <circle
           className="text-secondary"
