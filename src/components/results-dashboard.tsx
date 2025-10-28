@@ -57,8 +57,8 @@ export function ResultsDashboard({ result, headline }: ResultsDashboardProps) {
 
         <div className="lg:col-span-2 space-y-6">
           <Card className="shadow-md bg-secondary/30">
-            <CardHeader className="flex-row items-center gap-3 space-y-0">
-              <Bot className="h-6 w-6 text-primary" />
+            <CardHeader className="flex-row items-start gap-3 space-y-0">
+              <Bot className="h-6 w-6 text-primary mt-1" />
               <CardTitle>AI Explanation</CardTitle>
             </CardHeader>
             <CardContent>
@@ -73,9 +73,11 @@ export function ResultsDashboard({ result, headline }: ResultsDashboardProps) {
             </CardHeader>
             <CardContent>
               {result.redFlags && result.redFlags.length > 0 ? (
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-col gap-2">
                   {result.redFlags.map((flag, index) => (
-                    <Badge key={index} variant="destructive" className="bg-yellow-400/10 text-yellow-400 border-yellow-400/20">{flag}</Badge>
+                    <Badge key={index} variant="destructive" className="bg-yellow-400/10 text-yellow-400 border-yellow-400/20 h-auto text-wrap text-left justify-start">
+                      {flag}
+                    </Badge>
                   ))}
                 </div>
               ) : (
