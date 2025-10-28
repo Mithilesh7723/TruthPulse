@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import type { AnalyzeNewsArticleOutput } from '@/ai/flows/analyze-news-article';
+import { useToast } from "@/hooks/use-toast";
 import { AnalysisForm } from '@/components/analysis-form';
 import { ResultsDashboard } from '@/components/results-dashboard';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,6 +14,7 @@ export function MainPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [headline, setHeadline] = useState<string>('');
+  const { toast } = useToast();
 
   const handleAnalysisStart = (data: { headline: string; content: string }) => {
     setHeadline(data.headline);
@@ -24,6 +26,10 @@ export function MainPage() {
   const handleAnalysisComplete = (data: AnalyzeNewsArticleOutput) => {
     setResult(data);
     setIsLoading(false);
+    toast({
+      title: "Analysis Complete",
+      description: "The analysis of the article has been successfully completed.",
+    });
   };
 
   const handleAnalysisError = (message: string) => {

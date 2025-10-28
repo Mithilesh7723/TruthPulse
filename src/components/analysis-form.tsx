@@ -72,7 +72,7 @@ export function AnalysisForm({ onAnalysisStart, onAnalysisComplete, onAnalysisEr
               id="content"
               name="content"
               placeholder="Paste the full content of the news article here..."
-              className="min-h-[200px] mt-2 bg-background/70"
+              className="min-h-[200px] mt-2 bg-background/70 textarea-scrollbar"
             />
             {state.errors?.content && <p className="text-sm font-medium text-destructive mt-2">{state.errors.content[0]}</p>}
           </div>

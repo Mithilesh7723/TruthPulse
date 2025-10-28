@@ -67,3 +67,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom scrollbar for textarea */
+@layer utilities {
+  .textarea-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .textarea-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--secondary));
+    border-radius: 10px;
+  }
+
+  .textarea-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 10px;
+    border: 2px solid hsl(var(--secondary));
+  }
+
+  .textarea-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
+  }
+}
