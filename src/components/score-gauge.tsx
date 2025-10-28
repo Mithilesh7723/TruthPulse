@@ -21,7 +21,7 @@ export function ScoreGauge({ score, color }: ScoreGaugeProps) {
   const offset = circumference - progress * circumference;
 
   return (
-    <div className="relative h-36 w-36 sm:h-48 sm:w-48">
+    <div className="relative h-36 w-36 sm:h-40 sm:w-40 md:h-48 md:w-48">
       <svg className="h-full w-full" viewBox="0 0 200 200">
         <circle
           className="text-secondary"
@@ -46,9 +46,9 @@ export function ScoreGauge({ score, color }: ScoreGaugeProps) {
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-3xl sm:text-4xl font-bold text-foreground">
+        <span className="text-3xl sm:text-3xl md:text-4xl font-bold text-foreground">
           {Math.round(score * 100)}
-          <span className="text-xl sm:text-2xl text-muted-foreground">%</span>
+          <span className="text-xl sm:text-xl md:text-2xl text-muted-foreground">%</span>
         </span>
       </div>
     </div>
