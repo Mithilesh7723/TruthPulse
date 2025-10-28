@@ -35,14 +35,6 @@ npm start
 
 ---
 
-## 📊 Screenshots
-
-| Dashboard            | Analytics             | Collaboration        |
-|----------------------|-----------------------|----------------------|
-| ![](assets/dashboard.png) | ![](assets/analytics.png) | ![](assets/collab.png) |
-
----
-
 ## 💡 Use Cases
 
 - **Data Validation:** Instantly verify data authenticity.
