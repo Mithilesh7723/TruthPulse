@@ -1,6 +1,7 @@
 'use server';
 
 import { analyzeNewsArticle } from '@/ai/flows/analyze-news-article';
+import { translateText, type TranslateTextInput } from '@/ai/flows/translate-text';
 import { z } from 'zod';
 import type { AnalyzeNewsArticleOutput } from '@/ai/flows/analyze-news-article';
 
@@ -41,5 +42,26 @@ export async function handleAnalysis(prevState: FormState, formData: FormData): 
     return {
       errors: { _form: ['An unexpected error occurred during analysis. Please try again.'] },
     };
+  }
+}
+
+const TranslationSchema = z.object({
+  text: z.string(),
+  targetLanguage: z.string(),
+});
+
+export async function handleTranslation(input: TranslateTextInput): Promise<string> {
+  const validatedFields = TranslationSchema.safeParse(input);
+
+  if (!validatedFields.success) {
+    throw new Error('Invalid translation input.');
+  }
+
+  try {
+    const result = await translateText(validatedFields.data);
+    return result.translatedText;
+  } catch (error) {
+    console.error('Translation Error:', error);
+    throw new Error('An unexpected error occurred during translation.');
   }
 }
