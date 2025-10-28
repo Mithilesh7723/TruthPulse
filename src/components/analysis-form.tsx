@@ -32,11 +32,13 @@ function SubmitButton() {
 export function AnalysisForm({ onAnalysisStart, onAnalysisComplete, onAnalysisError }: AnalysisFormProps) {
   const [state, formAction] = useActionState(handleAnalysis, initialState);
   const formRef = useRef<HTMLFormElement>(null);
+  const prevDataRef = useRef<AnalyzeNewsArticleOutput | undefined>();
 
   useEffect(() => {
-    if (state.data) {
+    if (state.data && state.data !== prevDataRef.current) {
       onAnalysisComplete(state.data);
       formRef.current?.reset();
+      prevDataRef.current = state.data;
     }
     if (state.errors?._form) {
       onAnalysisError(state.errors._form.join(', '));
