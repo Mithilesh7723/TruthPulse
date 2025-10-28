@@ -4,7 +4,7 @@ import { useEffect, useRef, useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { handleAnalysis, type FormState } from '@/app/actions';
 import type { AnalyzeNewsArticleOutput } from '@/ai/flows/analyze-news-article';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,7 +14,7 @@ import { Loader2 } from 'lucide-react';
 const initialState: FormState = { errors: {} };
 
 type AnalysisFormProps = {
-  onAnalysisStart: () => void;
+  onAnalysisStart: (data: { headline: string; content: string }) => void;
   onAnalysisComplete: (data: AnalyzeNewsArticleOutput) => void;
   onAnalysisError: (message: string) => void;
 };
@@ -22,7 +22,7 @@ type AnalysisFormProps = {
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" disabled={pending} className="w-full sm:w-auto">
+    <Button type="submit" disabled={pending} className="w-full" size="lg">
       {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
       {pending ? 'Analyzing...' : 'Analyze Article'}
     </Button>
@@ -41,33 +41,30 @@ export function AnalysisForm({ onAnalysisStart, onAnalysisComplete, onAnalysisEr
     if (state.errors?._form) {
       onAnalysisError(state.errors._form.join(', '));
     }
-    // If there are validation errors, we also need to stop the loading state in parent.
-    if(state.errors?.headline || state.errors?.content) {
-        onAnalysisError(''); // Clear server error, but stop loading
+    if (state.errors?.headline || state.errors?.content) {
+      onAnalysisError(''); 
     }
   }, [state, onAnalysisComplete, onAnalysisError]);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Analyze News Article</CardTitle>
-        <CardDescription>
-          Enter the headline and content of a news article to check its authenticity.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
+    <Card className="bg-secondary/50 border-2">
+      <CardContent className="p-6">
         <form
           ref={formRef}
           action={formData => {
-            onAnalysisStart();
+            const headline = formData.get('headline') as string;
+            const content = formData.get('content') as string;
+            onAnalysisStart({ headline, content });
             formAction(formData);
           }}
-          className="space-y-4"
+          className="space-y-6"
         >
-          <div className="space-y-2">
-            <Label htmlFor="headline">Headline</Label>
-            <Input id="headline" name="headline" placeholder="e.g., NASA Confirms Alien Skeleton Found on Mars" />
-            {state.errors?.headline && <p className="text-sm font-medium text-destructive">{state.errors.headline[0]}</p>}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="md:col-span-3">
+              <Label htmlFor="headline" className="text-sm font-medium">Headline</Label>
+              <Input id="headline" name="headline" placeholder="e.g., NASA Confirms Alien Skeleton Found on Mars" className="mt-2 bg-background/70" />
+              {state.errors?.headline && <p className="text-sm font-medium text-destructive mt-2">{state.errors.headline[0]}</p>}
+            </div>
           </div>
           <div className="space-y-2">
             <Label htmlFor="content">Article Content</Label>
@@ -75,9 +72,9 @@ export function AnalysisForm({ onAnalysisStart, onAnalysisComplete, onAnalysisEr
               id="content"
               name="content"
               placeholder="Paste the full content of the news article here..."
-              className="min-h-[150px]"
+              className="min-h-[200px] mt-2 bg-background/70"
             />
-            {state.errors?.content && <p className="text-sm font-medium text-destructive">{state.errors.content[0]}</p>}
+            {state.errors?.content && <p className="text-sm font-medium text-destructive mt-2">{state.errors.content[0]}</p>}
           </div>
           <div className="flex justify-end">
             <SubmitButton />
