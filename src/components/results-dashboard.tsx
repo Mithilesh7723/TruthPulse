@@ -128,9 +128,9 @@ export function ResultsDashboard({ result, headline }: ResultsDashboardProps) {
                     <Bot className="h-6 w-6 text-primary mt-1" />
                     <CardTitle>AI Explanation</CardTitle>
                 </div>
-                <Button variant="outline" size="sm" onClick={onTranslate} disabled={isPending}>
+                <Button variant="outline" size="sm" onClick={onTranslate} disabled={isPending} className="shrink-0">
                   {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Languages className="h-4 w-4" />}
-                  <span className="ml-2">{isPending ? 'Translating...' : (isTranslated ? 'Show Original' : 'Translate to Hindi')}</span>
+                  <span className="ml-2 hidden sm:inline">{isPending ? 'Translating...' : (isTranslated ? 'Show Original' : 'Translate to Hindi')}</span>
                 </Button>
             </CardHeader>
             <CardContent>
