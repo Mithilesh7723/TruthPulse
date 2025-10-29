@@ -1,6 +1,6 @@
-# TruthPulse 
+# Nayan.ai 
 
-**TruthPulse** is your ultimate tool for truth discovery and data analysis! Whether you're a developer, data scientist, or enthusiast, TruthPulse offers a modern, powerful platform to extract insights and visualize facts with style.
+**Nayan.ai** is your ultimate tool for truth discovery and data analysis! Whether you're a developer, data scientist, or enthusiast, Nayan.ai offers a modern, powerful platform to extract insights and visualize facts with style.
 
 ---
 
@@ -19,10 +19,10 @@
 
 ```bash
 # Clone the repo
-git clone https://github.com/Mithilesh7723/TruthPulse.git
+git clone https://github.com/Mithilesh7723/Nayan.ai.git
 
 # Navigate to project directory
-cd TruthPulse
+cd Nayan.ai
 
 # Install dependencies (example for Node.js)
 npm install
@@ -50,13 +50,13 @@ npm start
 - **Backend:** Node.js, Python, or your preferred language
 - **Database:** MongoDB, PostgreSQL, or other scalable solutions
 
-> *TruthPulse is modular — swap technologies as you wish!*
+> *Nayan.ai is modular — swap technologies as you wish!*
 
 ---
 
 ## 👩‍💻 Contributing
 
-We love contributions! Please check out our [contributing guide](CONTRIBUTING.md) and help make TruthPulse even better.
+We love contributions! Please check out our [contributing guide](CONTRIBUTING.md) and help make Nayan.ai even better.
 
 - Fork the repo
 - Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -68,8 +68,8 @@ We love contributions! Please check out our [contributing guide](CONTRIBUTING.md
 
 ## 🗣️ Community & Support
 
-- [Discussions](https://github.com/Mithilesh7723/TruthPulse/discussions)
-- [Issues](https://github.com/Mithilesh7723/TruthPulse/issues)
+- [Discussions](https://github.com/Mithilesh7723/Nayan.ai/discussions)
+- [Issues](https://github.com/Mithilesh7723/Nayan.ai/issues)
 - [Twitter](https://twitter.com/horizonflare)
 - [Email](mailto:info@horizonflare.in)
 
@@ -83,15 +83,15 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## ✨ Crafted in Horizon Flare Studio
 
-TruthPulse is proudly crafted at **Horizon Flare Studio**, made in India, for **Bharat**.  
+Nayan.ai is proudly crafted at **Horizon Flare Studio**, made in India, for **Bharat**.  
 Empowering the nation with innovative, homegrown technology.
 
 ---
 
 ## ✨ Stay Tuned!
 
-TruthPulse is evolving — new features, integrations, and improvements are on the way. Star ⭐ the repo and join our community to stay updated!
+Nayan.ai is evolving — new features, integrations, and improvements are on the way. Star ⭐ the repo and join our community to stay updated!
 
 ---
 
-**TruthPulse — Illuminating Facts, Empowering Minds.**
+**Nayan.ai — Illuminating Facts, Empowering Minds.**
