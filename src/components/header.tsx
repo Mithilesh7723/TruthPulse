@@ -1,4 +1,4 @@
-import { TruthPulseLogo } from '@/components/truth-pulse-logo';
+import { NayanAiLogo } from '@/components/truth-pulse-logo';
 
 export function Header() {
   return (
@@ -6,7 +6,7 @@ export function Header() {
       <div className="container flex h-16 max-w-screen-2xl items-center">
         <div className="mr-4 flex">
           <a href="/" className="mr-6 flex items-center space-x-2">
-            <TruthPulseLogo className="h-8 w-8" />
+            <NayanAiLogo className="h-8 w-8" />
             <span className="font-bold text-lg sm:inline-block">
               Nayan.ai
             </span>
