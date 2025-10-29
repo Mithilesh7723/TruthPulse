@@ -7,8 +7,8 @@ import { cn } from '@/lib/utils';
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
-  title: 'TruthPulse - AI Fake News Analyzer',
-  description: 'Analyze news articles in real time for accuracy and bias with TruthPulse.',
+  title: 'Nayan.ai - AI Fake News Analyzer',
+  description: 'Analyze news articles in real time for accuracy and bias with Nayan.ai',
 };
 
 export default function RootLayout({
