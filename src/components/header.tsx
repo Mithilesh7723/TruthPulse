@@ -8,7 +8,7 @@ export function Header() {
           <a href="/" className="mr-6 flex items-center space-x-2">
             <TruthPulseLogo className="h-8 w-8" />
             <span className="font-bold text-lg sm:inline-block">
-              TruthPulse
+              Nayan.ai
             </span>
           </a>
         </div>
