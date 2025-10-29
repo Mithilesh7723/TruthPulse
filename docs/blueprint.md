@@ -1,4 +1,4 @@
-# **App Name**: TruthPulse
+# **App Name**: Nayan.ai
 
 ## Core Features:
 
